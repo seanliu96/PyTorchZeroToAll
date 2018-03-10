@@ -39,6 +39,7 @@ inputs = Variable(torch.Tensor([[h, e, l, l, o],
                                 [e, o, l, l, l],
                                 [l, l, e, e, l]]))
 
+hidden = (Variable(torch.randn(1, 3, 2)))
 # Propagate input through RNN
 # Input: (batch, seq_len, input_size) when batch_first=True
 # B x S x I
@@ -49,8 +50,7 @@ print("batch input size", inputs.size(), "out size", out.size())
 # One cell RNN input_dim (4) -> output_dim (2)
 cell = nn.RNN(input_size=4, hidden_size=2)
 
-# The given dimensions dim0 and dim1 are swapped.
-inputs = inputs.transpose(3, dim1=1, dim2=2)
+hidden = (Variable(torch.randn(1, 5, 2)))
 # Propagate input through RNN
 # Input: (seq_len, batch_size, input_size) when batch_first=False (default)
 # S x B x I
